@@ -1,0 +1,6 @@
+add_subdirectory (countpages)
+add_subdirectory (exportpage)
+add_subdirectory (qimage)
+add_subdirectory (showinfo)
+add_subdirectory (showtext)
+add_subdirectory (outline)
