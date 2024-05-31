@@ -14,7 +14,7 @@ include_directories (${MuPDF_INCLUDE_DIRS})
 
 # pdf4u library
 set (LIBMUPDF pdf4u)
-find_package (Qt5Gui)
+find_package (Qt6Gui)
 include_directories (${CMAKE_SOURCE_DIR}/include)
 include_directories (${CMAKE_SOURCE_DIR}/src/private)
 set (LIBMUPDF_SOURCES src/mupdf-document.cpp
@@ -25,7 +25,7 @@ set (LIBMUPDF_SOURCES src/mupdf-document.cpp
                       )
 add_library (${LIBMUPDF} STATIC ${LIBMUPDF_SOURCES})
 target_link_libraries (${LIBMUPDF} ${MuPDF_LIBRARIES})
-qt5_use_modules (${LIBMUPDF} Gui)
+qt6_use_modules (${LIBMUPDF} Gui)
 
 # Examples
 add_subdirectory (examples)
