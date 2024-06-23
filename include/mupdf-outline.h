@@ -3,8 +3,7 @@
 
 class QString;
 
-namespace MuPDF
-{
+namespace MuPDF {
 
 class Outline;
 class OutlinePrivate;
@@ -16,46 +15,44 @@ class Link;
  * @brief A tree of the outline of a document (also known
  *        as table of contents).
  */
-class Outline
-{
+class Outline {
 public:
-    ~Outline();
+  ~Outline();
 
-    OutlineItem topLevelItem() const;
+  OutlineItem topLevelItem() const;
 
 private:
-    Outline(OutlinePrivate *outlinep);
+  Outline(OutlinePrivate *outlinep);
 
-    OutlinePrivate *d;
+  OutlinePrivate *d;
 
-friend class Document;
+  friend class Document;
 };
 
 /**
  * @brief A outline item.
  */
-class OutlineItem
-{
+class OutlineItem {
 public:
-    OutlineItem();
-    OutlineItem(const OutlineItem &item);
-    OutlineItem & operator=(const OutlineItem &item);
-    ~OutlineItem();
+  OutlineItem();
+  OutlineItem(const OutlineItem &item);
+  OutlineItem &operator=(const OutlineItem &item);
+  ~OutlineItem();
 
-    bool isValid() const;
-    QString title() const;
-    Link * link() const;
-    OutlineItem next() const;
-    OutlineItem down() const;
+  bool isValid() const;
+  QString title() const;
+  Link *link() const;
+  OutlineItem next() const;
+  OutlineItem down() const;
 
 private:
-    OutlineItem(OutlineItemPrivate *itemp);
+  OutlineItem(OutlineItemPrivate *itemp);
 
-    OutlineItemPrivate *d;
+  OutlineItemPrivate *d;
 
-friend class Outline;
+  friend class Outline;
 };
 
-}
+} // namespace MuPDF
 
 #endif // end MUPDF_OUTLINE_H

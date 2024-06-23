@@ -4,8 +4,7 @@
 class QRectF;
 class QString;
 
-namespace MuPDF
-{
+namespace MuPDF {
 
 class TextBoxPrivate;
 
@@ -18,30 +17,25 @@ class TextBoxPrivate;
  * it (perhaps as it crosses columns or tables), a line may be represented
  * by multiple text boxes.
  */
-class TextBox
-{
+class TextBox {
 public:
-    ~TextBox();
+  ~TextBox();
 
-    QRectF boundingBox() const;
-    int numChars() const;
-    QRectF charBoundingBox(int index) const;
-//    bool hasSpaceAfter() const;
-//    TextBox *nextWord() const;
-    QString text() const;
+  QRectF boundingBox() const;
+  int numChars() const;
+  QRectF charBoundingBox(int index) const;
+  //    bool hasSpaceAfter() const;
+  //    TextBox *nextWord() const;
+  QString text() const;
 
 private:
-    TextBox(TextBoxPrivate *textboxp)
-        : d(textboxp)
-    {
+  TextBox(TextBoxPrivate *textboxp) : d(textboxp) {}
 
-    }
+  TextBoxPrivate *d;
 
-    TextBoxPrivate *d;
-
-friend class Page;
+  friend class Page;
 };
 
-} // end namespace Mu
+} // namespace MuPDF
 
 #endif // end MUPDF_TEXTBOX_H

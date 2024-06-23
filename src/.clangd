@@ -1,18 +1,24 @@
 CompileFlags:
-  Add: [-std=c++14, -Wno-documentation, -Wno-missing-prototypes]
+  Add:
+    [
+      -std=c++14,
+      -Wno-documentation,
+      -Wno-missing-prototypes,
+      -I/opt/homebrew/include,
+    ]
 
 Diagnostics:
   ClangTidy:
-  Add:
-    [
-      performance-*,
-      bugprone-*,
-      modernize-*,
-      clang-analyzer-*,
-      readability-identifier*,
-    ]
+    Add:
+      [
+        performance-*,
+        bugprone-*,
+        modernize-*,
+        clang-analyzer-*,
+        readability-identifier*,
+      ]
 
-  CheckOptions:
-    readability-identifier-naming.VariableCase: camelCase
+    CheckOptions:
+      readability-identifier-naming.VariableCase: camelCase
 
   Suppress: [-Wdeprecated-declarations]

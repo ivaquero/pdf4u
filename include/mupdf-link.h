@@ -4,121 +4,113 @@
 class QRectF;
 class QString;
 
-namespace MuPDF
-{
+namespace MuPDF {
 
 class LinkPrivate;
 
-class Link
-{
+class Link {
 public:
-    enum LinkType
-    {
-        None = 0,
-        Goto, ///< Goto a position in current file
-        URI, ///< A URI link
-        Launch, ///< Launch a file (a document or a executable)
-        Named, ///< Named action to perform
-        GotoR ///< Goto a position in another file
-    };
+  enum LinkType {
+    None = 0,
+    Goto,   ///< Goto a position in current file
+    URI,    ///< A URI link
+    Launch, ///< Launch a file (a document or a executable)
+    Named,  ///< Named action to perform
+    GotoR   ///< Goto a position in another file
+  };
 
-    virtual ~Link();
+  virtual ~Link();
 
-    virtual LinkType linkType() const {return None;}
-    virtual QRectF linkArea() const;
+  virtual LinkType linkType() const { return None; }
+  virtual QRectF linkArea() const;
 
 protected:
-    Link(LinkPrivate *linkp) : d(linkp) {}
+  Link(LinkPrivate *linkp) : d(linkp) {}
 
-    LinkPrivate *d;
+  LinkPrivate *d;
 
-friend class OutlineItemPrivate;
+  friend class OutlineItemPrivate;
 };
 
 /**
  * @brief Goto a position in current file.
  */
-class LinkGoto : public Link
-{
+class LinkGoto : public Link {
 public:
-    LinkType linkType() const {return Goto;}
-    int page() const;
-    bool fitHorizontally() const;
-    bool fitVertically() const;
-    float zoom() const;
+  LinkType linkType() const { return Goto; }
+  int page() const;
+  bool fitHorizontally() const;
+  bool fitVertically() const;
+  float zoom() const;
 
 protected:
-    LinkGoto(LinkPrivate *linkp) : Link(linkp) {}
+  LinkGoto(LinkPrivate *linkp) : Link(linkp) {}
 
-friend class OutlineItemPrivate;
+  friend class OutlineItemPrivate;
 };
 
 /**
  * @brief A URI link.
  */
-class LinkURI : public Link
-{
+class LinkURI : public Link {
 public:
-    LinkType linkType() const {return URI;}
-    QString uri() const;
-    bool isMap() const;
+  LinkType linkType() const { return URI; }
+  QString uri() const;
+  bool isMap() const;
 
 private:
-    LinkURI(LinkPrivate *linkp) : Link(linkp) {}
+  LinkURI(LinkPrivate *linkp) : Link(linkp) {}
 
-friend class OutlineItemPrivate;
+  friend class OutlineItemPrivate;
 };
 
 /**
  * @brief Launch a file (a document or a executable).
  */
-class LinkLaunch : public Link
-{
+class LinkLaunch : public Link {
 public:
-    LinkType linkType() const {return Launch;}
-    QString file() const;
-    bool newWindow() const;
-    bool isURI() const;
+  LinkType linkType() const { return Launch; }
+  QString file() const;
+  bool newWindow() const;
+  bool isURI() const;
 
 private:
-    LinkLaunch(LinkPrivate *linkp) : Link(linkp) {}
-    
-friend class OutlineItemPrivate;
+  LinkLaunch(LinkPrivate *linkp) : Link(linkp) {}
+
+  friend class OutlineItemPrivate;
 };
 
 /**
  * @brief Named action to perform.
  */
-class LinkNamed : public Link
-{
+class LinkNamed : public Link {
 public:
-    LinkType linkType() const {return Named;}
-    QString named() const;
-    
-private:
-    LinkNamed(LinkPrivate *linkp) : Link(linkp) {}
+  LinkType linkType() const { return Named; }
+  QString named() const;
 
-friend class OutlineItemPrivate;
+private:
+  LinkNamed(LinkPrivate *linkp) : Link(linkp) {}
+
+  friend class OutlineItemPrivate;
 };
 
 /**
  * @brief Goto a position in another file.
  */
-class LinkGotoR : public LinkGoto
-{
+class LinkGotoR : public LinkGoto {
 public:
-    LinkType linkType() const {return GotoR;}
-    int page() const;
-    QString destination() const;
-    QString file() const;
-    bool newWindow() const;
+  LinkType linkType() const { return GotoR; }
+  int page() const;
+  QString destination() const;
+  QString file() const;
+  bool newWindow() const;
 
 private:
-    LinkGotoR(LinkPrivate *linkp) : LinkGoto(linkp) {}
+  LinkGotoR(LinkPrivate *linkp) : LinkGoto(linkp) {}
 
-friend class OutlineItemPrivate;
+  friend class OutlineItemPrivate;
 };
 
-}
+} // namespace MuPDF
 
 #endif // end MUPDF_LINK_H
