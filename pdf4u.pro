@@ -3,6 +3,7 @@
 
 #TARGET = pdf4u
 
+CONFIG += c++17
 QT = core gui widgets
 
 HEADERS = \

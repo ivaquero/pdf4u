@@ -1,9 +1,9 @@
-﻿#include "../include/mupdf-document.h"
-#include "../include/mupdf-document_p.h"
+#include "../include/mupdf-document.h"
 #include "../include/mupdf-outline.h"
-#include "../include/mupdf-outline_p.h"
 #include "../include/mupdf-page.h"
-#include "../include/mupdf-page_p.h"
+#include "mupdf-document_p.h"
+#include "mupdf-outline_p.h"
+#include "mupdf-page_p.h"
 extern "C" {
 #include <mupdf/fitz.h>
 }
